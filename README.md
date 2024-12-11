@@ -49,9 +49,26 @@ conda run --name fractal-clouds-env python -m ipykernel install --user --name fr
 
 Some of the functions in `get_cloud_data.py` with no documentation can be explained with these equations from [IFS Documentation Part III - Chapter 2, Section 2.2.1](https://www.ecmwf.int/sites/default/files/elibrary/2023/81369-ifs-documentation-cy48r1-part-iii-dynamics-and-numerical-procedures.pdf) needed to calculate geopotential height on different levels.
 
-$$p_{k+1/2} = A_{k+1/2} + B_{k+1/2} p_{s}$$
-$$\Delta p_{k} = p_{k+1/2} - p_{k-1/2}$$
-$$T_{v} = T [1 + \{(R_{vap} / R_{dry}) - 1\} q - \sum_{k} q_{k}]$$
-$$\Phi_{k+1/2} = \Phi_{s} + \sum_{j=k+1}^{NLEV} R_{dry} (T_{v})_{j} ln\left(\frac{p_{j+1/2}}{p_{j-1/2}}\right)$$
-$$\alpha_{k} = 1 - \frac{p_{k-1/2}}{\Delta p_{k}} ln\left(\frac{p_{k+1/2}}{p_{k-1/2}}\right)$$
-$$\Phi_{k} = \Phi_{k+1/2} + \alpha_{k} R_{dry} (T_{v})_{k}$$
+```math
+p_{k+1/2} = A_{k+1/2} + B_{k+1/2} p_{s}
+```
+
+```math
+\Delta p_{k} = p_{k+1/2} - p_{k-1/2}
+```
+
+```math
+T_{v} = T [1 + \{(R_{vap} / R_{dry}) - 1\} q - \sum_{k} q_{k}]
+```
+
+```math
+\Phi_{k+1/2} = \Phi_{s} + \sum_{j=k+1}^{NLEV} R_{dry} (T_{v})_{j} ln\left(\frac{p_{j+1/2}}{p_{j-1/2}}\right)
+```
+
+```math
+\alpha_{k} = 1 - \frac{p_{k-1/2}}{\Delta p_{k}} ln\left(\frac{p_{k+1/2}}{p_{k-1/2}}\right)
+```
+
+```math
+\Phi_{k} = \Phi_{k+1/2} + \alpha_{k} R_{dry} (T_{v})_{k}
+```
